@@ -1,0 +1,149 @@
+---
+metadata:
+  title: |
+    Maine Security Deposit Return Letter
+  short title: |
+    ME Security Deposit Return
+  description: |
+    The Maine Security Deposit Return Letter interview will help you draft a letter to a former landlord requesting they return your security deposit.
+  #exit url: https://www.masslegalservices.org/content/online-snap-calculator
+  show login: False
+  #generate download screen: True
+---
+include: 
+  - docassemble.AssemblyLine:assembly_line.yml
+  - custom_ptla_theme_ngb.yml
+  #- MaineDebtCollectionHelper-calculations.yml
+---
+features:
+  question back button: True
+  navigation back button: False
+   #theme file downloaded from: bootstrap theme: https://bootswatch.com/cerulean/bootstrap.min.css
+  css: 
+    - ptlatheme.css
+    #- bootstrap.min.css
+  hide navbar: False 
+  debug: False
+---
+modules:
+  - docassemble.base.core
+---
+#mandatory: true
+#code: |
+  #Setting default currency values
+#  biWEI = 0
+#  WEI = 0
+#  MEI = 0
+---
+mandatory: True
+comment: |
+  Controls order and branching logic for questions specific to this form
+id: interview_order_SecurityDepositReturn
+code: |
+  SecurityDeposit_intro
+  users[0].name
+  users[0].address
+  set_progress(20)
+  landlord_name
+  set_progress(40)
+  rental_address
+  set_progress(60)
+  return_status
+  if return_status == partial_return:
+    notice_date
+    wear_and_tear
+  not_returned_amount
+  set_progress(80)
+  users[0].signature 
+  set_progress(100)
+---
+comment: |
+  This question is used to introduce your interview. Please customize
+id: SDRL_intro
+continue button field: SecurityDeposit_intro
+question: |
+  Maine Security Deposit Return Letter
+subquestion: |
+  Use this interview to draft a letter to a former landlord to request the return of your security deposit. 
+  
+  This interview should only be used in the state of Maine. It is based on Maine law, and the law in other states may be different. 
+  
+  This is not legal advice. If you have questions about a Maine landlord keeping part or all of your security deposit, you should contact a lawyer. <a href="https://ptla.org/contact-us">Pine Tree Legal Assistance may be able to help.</a> 
+  
+  You can learn more about security deposits in our article <a href="https://www.ptla.org/classroom/how-to-get-your-security-deposit-back-maine">Rights of Maine Renters: How to get your security deposit back, and what to do if you don't</a>.
+
+continue button label: Get started
+---
+id: Landlord
+question: |
+  About your previous landlord
+fields:
+  - What is your former landlord's full name?: landlord_name
+  - What is your former landlord's mailing address?: landlord_address 
+---
+id: Previous Rental
+question: |
+  About your previous rental
+fields:
+  - What is the address of your previous rental?: rental_address
+  - When did your tenancy there end?: tenancy_end_date
+    datatype: date
+  - What was total security deposit paid?: total_deposit
+    datatype: currency    
+---
+id: Return status
+question: |
+  What is the status of your security deposit?
+field: return_status
+choices:
+  - 'My previous landlord has not returned some or all of my deposit and has not sent a notice telling me why'
+  - 'My previous landlord sent me a notice saying they are keeping some or all of my deposit'
+---  
+mandatory: True 
+code: |
+    if return_status == 'My previous landlord has not returned some or all of my deposit and has not sent a notice telling me why':
+      not_returned = True
+    else:
+      partial_return = True
+---
+id: Notice date
+question: |
+  About the notice
+fields:
+  - What is the date on the notice your landlord sent you?: notice_date
+    datatype: date
+---
+id: Return demand
+question: |
+  About your deposit
+fields:
+  - How much of your deposit has the landlord kept?: not_returned_amount
+    datatype: currency
+---
+id: Dispute demand
+question: |
+  About why you disagree with your previous landlord's reasons for keeping part or all of your security deposit
+fields:
+  - The damages the landlord is claiming are just normal wear and tear: wear_and_tear
+    datatype: yesno
+  - The damages the landlord is claiming are not damages you caused: not_my_damage
+    datatype: yesno
+  - I do not owe the money the landlord is keeping: not_owed
+    datatype: yesno
+  - I disagree for another reason: other_dispute
+    datatype: yesno
+  - Why do you disagree with the landlord's reasons for keeping some or all of your security deposit?: other_dispute_detail
+    input type: area
+    show if: other_dispute
+---
+mandatory: True
+question: |
+  All done! Save or print your letter to send to your former landlord.
+attachment:
+  name: Security Deposit Return Letter
+  filename: SecurityDepositReturnLetter
+  docx template file: SecurityDepositReturnLetter.docx
+  skip undefined: True
+  valid formats:
+    - pdf
+    - docx
