@@ -45,6 +45,8 @@ code: |
   users[0].address
   set_progress(20)
   landlord_name
+  landlord_address
+  #other_parties[0].address
   set_progress(40)
   rental_address
   set_progress(60)
@@ -77,14 +79,28 @@ id: Landlord
 question: |
   About your previous landlord
 fields:
-  - What is your former landlord's full name?: landlord_name
-  - What is your former landlord's mailing address?: landlord_address 
+  - What is your former landlord's name?: landlord_name
+  #- What is your former landlord's mailing address?: landlord_address 
+---
+id: Landlord address
+sets:
+    - other_parties[0].address.address
+    - other_parties[0].address.unit
+    - other_parties[0].address.city
+    - other_parties[0].address.state
+    - other_parties[0].address.zip
+question:  |
+  About your previous landlord
+fields:
+  - code: |
+      other_parties[0].address_fields()
+continue button field: landlord_address
 ---
 id: Previous Rental
 question: |
   About your previous rental
 fields:
-  - What is the address of your previous rental?: rental_address
+  - What is the full address of your previous rental?: rental_address
   - When did your tenancy there end?: tenancy_end_date
     datatype: date
   - What was total security deposit paid?: total_deposit
