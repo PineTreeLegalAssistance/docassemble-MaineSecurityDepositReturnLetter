@@ -49,6 +49,7 @@ code: |
   #other_parties[0].address
   set_progress(40)
   rental_address
+  tenancy_end_date
   set_progress(60)
   partial_return
   not_returned_amount
@@ -90,7 +91,7 @@ sets:
     - other_parties[0].address.state
     - other_parties[0].address.zip
 question:  |
-  About your previous landlord
+  What is your previous landlord's address?
 fields:
   - code: |
       other_parties[0].address_fields()
@@ -100,11 +101,33 @@ id: Previous Rental
 question: |
   About your previous rental
 fields:
-  - What is the full address of your previous rental?: rental_address
+  #- What is the full address of your previous rental?: rental_address
   - When did your tenancy there end?: tenancy_end_date
     datatype: date
   - What was total security deposit paid?: total_deposit
     datatype: currency    
+---
+objects:
+  - rental: Individual
+---
+id: Previous rental address
+sets:
+    - rental.address.address
+    - rental.address.unit
+    - rental.address.city
+    - rental.address.state
+    - rental.address.zip
+question:  |
+  What is the address of your previous rental?
+fields:
+    - Street address: rental.address.address
+    - Apartment/Unit: rental.address.unit
+      required: False
+    - City/Town: rental.address.city
+    - State: rental.address.state
+    - Zip code: rental.address.zip
+
+continue button field: rental_address
 ---
 id: Return status
 question: |
