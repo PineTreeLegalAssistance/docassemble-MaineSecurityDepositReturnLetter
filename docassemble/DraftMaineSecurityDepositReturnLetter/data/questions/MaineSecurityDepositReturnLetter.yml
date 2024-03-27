@@ -78,7 +78,7 @@ continue button label: Get started
 ---
 id: Landlord
 question: |
-  About your previous landlord
+  About your former landlord
 fields:
   - What is your former landlord's name?: landlord_name
   #- What is your former landlord's mailing address?: landlord_address 
@@ -91,7 +91,7 @@ sets:
     - other_parties[0].address.state
     - other_parties[0].address.zip
 question:  |
-  What is your previous landlord's address?
+  What is your former landlord's address?
 fields:
   - code: |
       other_parties[0].address_fields()
@@ -99,12 +99,12 @@ continue button field: landlord_address
 ---
 id: Previous Rental
 question: |
-  About your previous rental
+  About your former rental
 fields:
   #- What is the full address of your previous rental?: rental_address
   - When did your tenancy there end?: tenancy_end_date
     datatype: date
-  - What was total security deposit paid?: total_deposit
+  - What was the total security deposit paid?: total_deposit
     datatype: currency    
 ---
 objects:
@@ -118,10 +118,10 @@ sets:
     - rental.address.state
     - rental.address.zip
 question:  |
-  What is the address of your previous rental?
+  What is the address of your former rental?
 fields:
     - Street address: rental.address.address
-    - Apartment/Unit: rental.address.unit
+    - Unit: rental.address.unit
       required: False
     - City/Town: rental.address.city
     - State: rental.address.state
@@ -156,6 +156,8 @@ fields:
 id: Dispute demand
 question: |
   About why you disagree with your previous landlord's reasons for keeping part or all of your security deposit
+subquestion: |
+  Please check all that apply
 fields:
   - The damages the landlord is claiming are just normal wear and tear: wear_and_tear
     datatype: yesno
