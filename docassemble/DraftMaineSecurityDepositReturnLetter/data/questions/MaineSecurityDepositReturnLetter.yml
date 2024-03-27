@@ -48,11 +48,10 @@ code: |
   set_progress(40)
   rental_address
   set_progress(60)
-  return_status
-  if return_status == partial_return:
-    notice_date
-    wear_and_tear
+  partial_return
   not_returned_amount
+  if partial_return:
+    wear_and_tear
   set_progress(80)
   users[0].signature 
   set_progress(100)
@@ -94,24 +93,19 @@ fields:
 id: Return status
 question: |
   What is the status of your security deposit?
-field: return_status
-choices:
-  - 'My previous landlord has not returned some or all of my deposit and has not sent a notice telling me why'
-  - 'My previous landlord sent me a notice saying they are keeping some or all of my deposit'
----  
-mandatory: True 
-code: |
-    if return_status == 'My previous landlord has not returned some or all of my deposit and has not sent a notice telling me why':
-      not_returned = True
-    else:
-      partial_return = True
----
-id: Notice date
-question: |
-  About the notice
-fields:
+fields: 
+  - Has your landlord sent you a notice about not returning part or all of your security deposit?: partial_return
+    datatype: yesnoradio
   - What is the date on the notice your landlord sent you?: notice_date
     datatype: date
+    show if: partial_return
+---
+mandatory: True
+code: |
+  if partial_return == True:
+    not_returned = False
+  else:
+    not_returned = True
 ---
 id: Return demand
 question: |
