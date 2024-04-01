@@ -28,13 +28,6 @@ features:
 modules:
   - docassemble.base.core
 ---
-#mandatory: true
-#code: |
-  #Setting default currency values
-#  biWEI = 0
-#  WEI = 0
-#  MEI = 0
----
 mandatory: True
 comment: |
   Controls order and branching logic for questions specific to this form
@@ -46,7 +39,6 @@ code: |
   set_progress(20)
   landlord_name
   landlord_address
-  #other_parties[0].address
   set_progress(40)
   rental_address
   tenancy_end_date
@@ -163,7 +155,9 @@ fields:
     datatype: yesno
   - The damages the landlord is claiming are not damages you caused: not_my_damage
     datatype: yesno
-  - I do not owe the money the landlord is keeping: not_owed
+  - You do not owe the money the landlord is keeping (you already repaired damages or paid the landlord for damages): not_owed
+    datatype: yesno
+  - The landlord did not include an itemized list of damages, or give a reason for why they kept some or all of your deposit: no_reason
     datatype: yesno
   - I disagree for another reason: other_dispute
     datatype: yesno
