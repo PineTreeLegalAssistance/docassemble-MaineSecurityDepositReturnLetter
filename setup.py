@@ -43,10 +43,10 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
                 out.setdefault(package, []).append(prefix+name)
     return out
 
-setup(name='docassemble.DraftMaineSecurityDepositReturnLetter',
+setup(name='docassemble.MaineSecurityDepositReturnLetter',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='Early draft of ME Security Deposit Return Letter',
+      long_description='Draft for testing of Maine Security Deposit Return Letter\r\n\r\nPine Tree Legal Assistance - Maine Forms Project\r\n\r\nAuthor: Jack Haycock\r\nCreated March, 2024\r\n\r\nUse this form letter to request the return of your security deposit from a Maine landlord',
       long_description_content_type='text/markdown',
       author='Jack Haycock',
       author_email='jhaycock@ptla.org',
@@ -56,6 +56,6 @@ setup(name='docassemble.DraftMaineSecurityDepositReturnLetter',
       namespace_packages=['docassemble'],
       install_requires=[],
       zip_safe=False,
-      package_data=find_package_data(where='docassemble/DraftMaineSecurityDepositReturnLetter/', package='docassemble.DraftMaineSecurityDepositReturnLetter'),
+      package_data=find_package_data(where='docassemble/MaineSecurityDepositReturnLetter/', package='docassemble.MaineSecurityDepositReturnLetter'),
      )
 
