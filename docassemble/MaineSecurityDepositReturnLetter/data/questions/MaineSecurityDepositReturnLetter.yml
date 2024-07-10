@@ -15,6 +15,12 @@ include:
   - custom_ptla_theme_ngb.yml
   #- MaineDebtCollectionHelper-calculations.yml
 ---
+default screen parts:
+  footer: |
+    [:share-alt-square: Share](${ url_ask([{'undefine': ['al_sharing_type','al_how_share_link']}, 'al_share_form_screen', {'recompute': ['al_did_share_form']}, 'al_share_results']) })
+    [:info-circle: About](${ url_action('about_this_interview') })
+    [:comment-dots: Feedback](https://forms.office.com/Pages/ResponsePage.aspx?id=gOsuS1HkzESOjJ_IxTUKuMd_2zPCiBNIvwzVGRoYK5FUQ1FaR0RWTVY4Mks5N0dNUUc5SENPWUZURy4u){:target="_blank"}
+---
 features:
   question back button: True
   navigation back button: False
@@ -130,24 +136,21 @@ subquestion: |
   This is not legal advice. If you have questions about a Maine landlord keeping part or all of your security deposit, you should contact a lawyer. <a href="https://ptla.org/contact-us">Pine Tree Legal Assistance may be able to help.</a> 
   
   You can learn more about security deposits in our article <a href="https://www.ptla.org/classroom/how-to-get-your-security-deposit-back-maine">Rights of Maine Renters: How to get your security deposit back, and what to do if you don't</a>.
-   
-   ${ display_template(PTLA_terms_of_use, scrollable=True, collapse=False) }
+  
+  ${ display_template(PTLA_terms_of_use, scrollable=True, collapse=False) }
+
 
 fields:
-  # This points to a terms of use in this package which you can edit.
-  # If you prefer, you can link to a static website by deleting everything
-  # in the ${ } tags and replacing with a static website, like 
-  # https://example.com/tos
-  - To continue, you must accept our terms of use: acknowledged_information_use
+  - To continue, you must you must accept the terms of use: acknowledged_information_use
     datatype: checkboxes
     none of the above: False    
     minlength: 1
     choices:
-      - I accept the terms of use.: I accept
+      - I accept the terms of use.
     validation messages:
       minlength: |
         You cannot continue unless you agree to the terms of use.    
-   
+
 continue button label: Get started
 ---
 id: Landlord
