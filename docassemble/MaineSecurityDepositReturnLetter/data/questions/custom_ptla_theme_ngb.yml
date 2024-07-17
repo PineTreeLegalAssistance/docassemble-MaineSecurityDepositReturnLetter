@@ -2,7 +2,6 @@
 comment: |
   Use this file as a model for your own organization's branding package. You can
   also place custom versions of questions from ql_baseline.yml into this file.
-
   Then, reference this package in your own interview YAML file. For example,
   if you added this file to a package named "ALMyState", you might have 
   an include block in each interview that looks like this:
@@ -20,16 +19,16 @@ objects:
 # See: https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/framework/magic_variables
 ---
 # Metadata is used in the tab and navigation bar
-metadata:
-  title: |
-    Maine Security Deposit Return Letter
-  short title: |
-    ME Security Deposit Letter   
-  exit url: |
-    https://www.ptla.org
+#metadata:
+#  title: |
+#    PTLA Forms Project
+#  short title: |
+#    Complete Forms Online   
+#  exit url: |
+#    https://www.ptla.org
 ---
 code: |
-  AL_ORGANIZATION_TITLE = "Maine Court Forms Project"
+  AL_ORGANIZATION_TITLE = "Pine Tree Legal Forms Project"
 ---  
 code: |
   AL_ORGANIZATION_HOMEPAGE = "https://apps.ptla.org"
@@ -56,13 +55,10 @@ comment: |
   - button style
   - fonts
   - theme colors
-
   You should generate a bootstrap theme file instead of overriding individual
   CSS properties.
-
   Instructions available here:
   https://suffolklitlab.org/docassemble-AssemblyLine-documentation/docs/customization/overview/
-
   Once you generate the theme file: 
   
   1. name it something like "my_theme.css"
@@ -149,7 +145,6 @@ right: |
 #comment: |
 #  The al_courts.py file in this package is a simple frontend to an Excel spreadsheet
 #  with court names and addresses.
-
 #  You may want to edit the Python code to add additional features, such as address
 #  lookup, or to move the spreadsheet into the database for performance reasons.
 #modules:
@@ -222,7 +217,6 @@ right: |
 #code: |
 #  trial_court = all_courts.as_court('trial_court', trial_court_index)
 #  trial_court.geolocate()  
-
 #    ${ how_to_pick_court_help_template }
 ---
 #code: |
