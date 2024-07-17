@@ -46,7 +46,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.MaineSecurityDepositReturnLetter',
       version='1.0.0',
       description=('Maine Security Deposit Return Letter'),
-      long_description='# docassemble.MaineSecurityDepositReturnLetter\n\nMaine Security Deposit Return Letter\n\n## Author\n\nJack Haycock, jhaycock@ptla.org\n\n',
+      long_description='# docassemble.MaineSecurityDepositReturnLetter\r\n\r\nMaine Security Deposit Return Letter\r\n\r\n## Author\r\n\r\nJack Haycock, jhaycock@ptla.org\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Jack Haycock',
       author_email='jhaycock@ptla.org',
