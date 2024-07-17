@@ -1,7 +1,8 @@
+# docassemble.MaineSecurityDepositReturnLetter
+
 Maine Security Deposit Return Letter
 
-Pine Tree Legal Assistance - Maine Forms Project
+## Author
 
-Author: Jack Haycock Created March, 2024
+Jack Haycock, jhaycock@ptla.org
 
-Use this form letter to request the return of your security deposit from a Maine landlord
