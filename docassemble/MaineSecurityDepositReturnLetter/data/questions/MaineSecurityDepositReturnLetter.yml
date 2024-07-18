@@ -85,6 +85,7 @@ comment: |
 id: interview_order_SecurityDepositReturn
 code: |
   SecurityDeposit_intro
+  partial_return
   users[0].name
   users[0].address
   set_progress(20)
@@ -94,7 +95,6 @@ code: |
   rental_address
   tenancy_end_date
   set_progress(60)
-  partial_return
   not_returned_amount
   if partial_return:
     wear_and_tear
