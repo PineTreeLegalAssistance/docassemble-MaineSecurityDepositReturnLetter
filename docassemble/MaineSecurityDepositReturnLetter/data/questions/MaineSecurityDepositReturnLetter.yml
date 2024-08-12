@@ -252,7 +252,7 @@ attachments:
 ---
 mandatory: True
 question: |
-  All done! Save or print your letter to send to your former landlord.
+  All done! Below you can save or print your letter to send to your former landlord and instructions on next steps.
 subquestion: |
 
   ${ al_user_bundle.download_list_html() }    
