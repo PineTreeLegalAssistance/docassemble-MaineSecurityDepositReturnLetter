@@ -113,7 +113,7 @@ subquestion: |
   
   This interview should only be used in the state of Maine. It is based on Maine law, and the law in other states may be different. 
   
-  This is not legal advice. If you have questions about a Maine landlord keeping part or all of your security deposit, you should contact a lawyer. <a href="https://ptla.org/contact-us">Pine Tree Legal Assistance may be able to help.</a> 
+  This interview should only be used if your former landlord has not returned your security deposit or sent you a notice about not returning some or all of your deposit. Generally, a Maine landlord has 21 days to return your deposit or tell you they are keeping some or all of it. But Maine law allows landlord's to extend this time to 30 days *if* they give you notice in writing. 
   
   You can learn more about security deposits in our article <a href="https://www.ptla.org/classroom/how-to-get-your-security-deposit-back-maine">Rights of Maine Renters: How to get your security deposit back, and what to do if you don't</a>.
   
@@ -227,14 +227,34 @@ fields:
     input type: area
     show if: other_dispute
 ---
+objects:
+  - Next_Steps: ALDocument.using(title="Instructions", filename="Next_Steps_-_Maine_Security_Deposit_Return.docx", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
+  - Security_Deposit_Return_Letter: ALDocument.using(title="Security Deposit Return Letter", filename="SecurityDepositReturnLetter", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
+---
+objects:
+  - al_user_bundle: ALDocumentBundle.using(elements=[Next_Steps,Security_Deposit_Return_Letter], filename="security_deposit_package.pdf", title="All documents to download for your records", enabled=True)
+  - al_recipient_bundle: ALDocumentBundle.using(elements=Next_Steps,Security_Deposit_Return Letter], filename="security_deposit_package.pdf", title="All documents to download for your records", enabled=True)  
+---  
+attachments:
+  - name: Security_Deposit_Return_Letter
+    filename: SecurityDepositReturnLetter
+    docx template file: SecurityDepositReturnLetter.docx
+    skip undefined: True
+    variable name: Security_Deposit_Return_Letter[i]
+    valid formats:
+      - pdf
+      - docx
+  - name: Next_Steps
+    filename: NextSteps - MaineSecurityDepositReturn           
+    skip undefined: True
+    docx template file: Next_Steps_-_Maine_Security_Deposit_Return.docx
+    variable name: Next_Steps[i]
+---
 mandatory: True
 question: |
   All done! Save or print your letter to send to your former landlord.
-attachment:
-  name: Security Deposit Return Letter
-  filename: SecurityDepositReturnLetter
-  docx template file: SecurityDepositReturnLetter.docx
-  skip undefined: True
-  valid formats:
-    - pdf
-    - docx
+subquestion: |
+
+  ${ al_user_bundle.download_list_html() }    
+  
+  ${ al_user_bundle.send_button_html(show_editable_checkbox=False) }
