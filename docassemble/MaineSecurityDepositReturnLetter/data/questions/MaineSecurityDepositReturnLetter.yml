@@ -109,15 +109,19 @@ continue button field: SecurityDeposit_intro
 question: |
   Maine Security Deposit Return Letter
 subquestion: |
-  Use this interview to draft a letter to a former landlord to request the return of your security deposit. 
+  Use this tool to draft a letter to a former landlord to request the return of your security deposit.
   
-  This interview should only be used in the state of Maine. It is based on Maine law, and the law in other states may be different. 
-  
-  This interview should only be used if your former landlord has not returned your security deposit or sent you a notice about not returning some or all of your deposit. Generally, a Maine landlord has 21 days to return your deposit or tell you they are keeping some or all of it. But Maine law allows landlord's to extend this time to 30 days *if* they give you notice in writing. 
-  
-  You can learn more about security deposits in our article <a href="https://www.ptla.org/classroom/how-to-get-your-security-deposit-back-maine">Rights of Maine Renters: How to get your security deposit back, and what to do if you don't</a>.
+  You should <strong>only use this tool if</strong>:
+  <ul>
+  <li>The problem you're trying to solve with this tool is in the State of Maine. It is based on Maine law, and the law in other states may be different. </li>
+  <li>Your former landlord has not returned your security deposit or has sent you a notice about not returning some or all of your deposit within 21 - 30 days of the end of your tenancy. Generally, a Maine landlord has 21 days to return your deposit or tell you they are keeping some or all of it. Maine law allows landlords to extend this time to 30 days <strong>*if*</strong> they give you notice in writing.</li>
+  </ul>
+
+  Please review our Terms of Use below before getting started.
   
   ${ display_template(PTLA_terms_of_use, scrollable=True, collapse=False) }
+  
+  <br />
 fields:
   - To continue, you must you must accept the terms of use: acknowledged_information_use
     datatype: checkboxes
