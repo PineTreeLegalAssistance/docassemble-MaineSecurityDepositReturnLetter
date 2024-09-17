@@ -252,6 +252,19 @@ fields:
     input type: area
     show if: other_dispute
 ---
+id: Signature
+question: |
+  Sign your Security Deposity Return Letter
+subquestion: |
+  Sign your letter using your finger on a touchscreen, or a mouse - your signature will be added to your letter.
+  <br />
+  <br />
+  <strong>Or you can print the letter and sign it on paper before mailing. Just leave the signature field below blank and choose 'Next' if you want to sign your form this way.</strong> 
+signature: users[0].signature
+under: |
+  ${ "Sign your name here" }
+required: False
+---
 objects:
   - Next_Steps: ALDocument.using(title="Instructions", filename="Next_Steps_-_Maine_Security_Deposit_Return.docx", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
   - Security_Deposit_Return_Letter: ALDocument.using(title="Security Deposit Return Letter", filename="SecurityDepositReturnLetter", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
