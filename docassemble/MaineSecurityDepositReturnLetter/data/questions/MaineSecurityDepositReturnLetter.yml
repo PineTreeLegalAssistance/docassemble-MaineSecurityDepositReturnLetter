@@ -121,6 +121,8 @@ subquestion: |
   <li>The problem you're trying to solve with this tool is in the State of Maine. It is based on Maine law, and the law in other states may be different. </li>
   <li>Your former landlord has not returned your security deposit or has sent you a notice about not returning some or all of your deposit within 21 - 30 days of the end of your tenancy. Generally, a Maine landlord has 21 days to return your deposit or tell you they are keeping some or all of it. Maine law allows landlords to extend this time to 30 days <strong>*if*</strong> they give you notice in writing.</li>
   </ul>
+  
+  <strong>A note if your landlord lived in the same building</strong>: Maine law does not require landlords to follow the Security Deposit rules if they live in the same building as the tenant and there are five or fewer units. You can still make a demand for your deposit. You can argue your landlord should only be allowed to keep it for damages and money owed because it was a deposit and not a fee. But, a judge might apply the law differently.
 
   Please review our Terms of Use below before getting started.
   
@@ -143,7 +145,7 @@ id: Landlord
 question: |
   About your former landlord
 fields:
-  - What is your former landlord's name?: landlord_name
+  - What is your former landlord's name? (If it's a business, use the business name): landlord_name
   #- What is your former landlord's mailing address?: landlord_address 
 ---
 id: Landlord address
@@ -167,8 +169,12 @@ fields:
   #- What is the full address of your previous rental?: rental_address
   - When did your tenancy there end?: tenancy_end_date
     datatype: date
+    help: |
+      The date your tenancy ends is usually the date you moved out and gave your landlord the keys back. If you gave notice and moved out early, it could be the day you told your landlord your tenancy would end.
   - What was the total security deposit paid?: total_deposit
-    datatype: currency    
+    datatype: currency
+    note: | 
+      If you paid last months rent when you moved in, but it was not applied to your last month of living in the unit, include that amount with your security deposit.
 ---
 objects:
   - rental: Individual
@@ -236,6 +242,8 @@ question: |
 fields:
   - How much of your deposit has the landlord kept?: not_returned_amount
     datatype: currency
+    help: | 
+      If you paid last months rent when you moved in, but it was not applied to your last month of living in the unit, include that amount with your security deposit.
 ---
 id: Dispute demand
 question: |
