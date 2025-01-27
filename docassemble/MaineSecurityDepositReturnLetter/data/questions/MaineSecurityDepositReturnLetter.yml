@@ -316,6 +316,7 @@ attachments:
     docx template file: Next_Steps_-_Maine_Security_Deposit_Return.docx
     variable name: Next_Steps[i]
 ---
+id: interview_complete
 mandatory: True
 question: |
   All done! Below you can save or print your letter to send to your former landlord and instructions on next steps.
